@@ -1,0 +1,2 @@
+alias = pygobject
+regex = ^2\.28(\..+)?
