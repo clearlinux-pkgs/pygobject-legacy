@@ -1,2 +1,2 @@
 alias = pygobject
-regex = ^2\.28(\..+)?
+regex = ^2\.28(?:\..+)?
