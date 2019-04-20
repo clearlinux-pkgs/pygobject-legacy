@@ -4,7 +4,7 @@
 #
 Name     : pygobject-legacy
 Version  : 2.28.7
-Release  : 2
+Release  : 3
 URL      : https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
 Summary  : Python bindings for GObject
