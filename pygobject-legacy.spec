@@ -4,7 +4,7 @@
 #
 Name     : pygobject-legacy
 Version  : 2.28.7
-Release  : 3
+Release  : 4
 URL      : https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
 Source0  : https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
 Summary  : Python bindings for GObject
@@ -27,10 +27,13 @@ BuildRequires : python-dev
 BuildRequires : python3-dev
 
 %description
-PyGObject
-=====
-Original authors:   James Henstridge <james@daa.com.au>
-Johan Dahlin <johan@gnome.org>
+Windows Setuptools Build Instructions
+======================================
+1. Install gtk+ bundle from gtk.org (to C:\GTK for example)
+2. Install Python2.6
+3. Install MinGW and MSYS
+4. Add the following to your msys environment variables
+(open and append to C:\msys\1.0\etc\profile) or set for the session
 
 %package bin
 Summary: bin components for the pygobject-legacy package.
@@ -57,6 +60,7 @@ Requires: pygobject-legacy-lib = %{version}-%{release}
 Requires: pygobject-legacy-bin = %{version}-%{release}
 Requires: pygobject-legacy-data = %{version}-%{release}
 Provides: pygobject-legacy-devel = %{version}-%{release}
+Requires: pygobject-legacy = %{version}-%{release}
 
 %description dev
 dev components for the pygobject-legacy package.
@@ -113,12 +117,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543235018
+export SOURCE_DATE_EPOCH=1557022870
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static PYTHON=/usr/bin/python2
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1543235018
+export SOURCE_DATE_EPOCH=1557022870
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pygobject-legacy
 cp COPYING %{buildroot}/usr/share/package-licenses/pygobject-legacy/COPYING
